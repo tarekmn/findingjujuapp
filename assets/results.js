@@ -1,8 +1,8 @@
 
-let savedCardArray = [] 
+let savedCardArray = []
 if (localStorage.getItem("saved")) {
   savedCardArray = localStorage.getItem("saved");
-} 
+}
 
 
 
@@ -15,7 +15,7 @@ function displayCards() {
     const element = localDataArray[0][i];
 
     if (!localDataArray[0][i].primary_photo_cropped) {
-      element.primary_photo_cropped= ('./assets/images/comingsoonlogo.png')
+      element.primary_photo_cropped = ('./assets/images/comingsoonlogo.png')
     }
 
     //Dynamically creating search result cards 
@@ -39,16 +39,16 @@ function displayCards() {
   }
 
   let cardListner = $('.cardListner')
-//card listner for save button 
+  //card listner for save button 
 
-  cardListner.on('click', function(event){
+  cardListner.on('click', function (event) {
     let savedIndex = $(this).attr("data-index")
     let savedData = localDataArray[0][Number(savedIndex)]
     savedCardArray.push(savedData)
     localStorage.setItem("saved", JSON.stringify(savedCardArray));
 
   })
-  
+
 }
 
 

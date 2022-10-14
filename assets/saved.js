@@ -8,7 +8,7 @@ function displaySavedCards() {
     const element = localSavedDataArray[i];
 
     if (!localSavedDataArray[i].primary_photo_cropped) {
-      element.primary_photo_cropped= ('./assets/images/comingsoonlogo.png')
+      element.primary_photo_cropped = ('./assets/images/comingsoonlogo.png')
     }
 
     //Dynamically creating saved cards
@@ -30,13 +30,13 @@ function displaySavedCards() {
   }
 
   let clearListner = $('#clearID')
-//card listner for save 
+  //card listner for save 
 
-  clearListner.on('click', function(event){
+  clearListner.on('click', function (event) {
     localStorage.removeItem("saved");
     location.reload();
   })
-  
+
 }
 
 
