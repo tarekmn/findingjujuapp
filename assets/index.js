@@ -10,7 +10,7 @@ const dataArray = [] //Takes API data and puts into array
 let searchArray = []
 
 
-//Api request for token using the general oauth url post request template
+//Api request for token using the general oauth url post request 
 
 function getToken() {
   fetch('https://api.petfinder.com/v2/oauth2/token', {
@@ -39,25 +39,12 @@ function getPetData(data) {
   let good_with_children = kidsInput.val()
 
 
-  if(isNaN(zipCode) || zipcodeInput.val().length != 5){
-
+  if (isNaN(zipCode) || zipcodeInput.val().length != 5) {
     alert("please input a proper zipcode")
     return
   }
 
- 
-
-
-  // console.log("sdf",zipCode)
-  // console.log(age)
-  // console.log(size)
-  // console.log(gender)
-  // console.log(good_with_children)
-
-
   if (localStorage.search) {
-    // localStorage.clear()
-    // localStorage.setItem("search", "")
     searchArray = []
   }
 
@@ -68,10 +55,9 @@ function getPetData(data) {
   searchArray.push(good_with_children)
   localStorage.setItem("search", JSON.stringify(searchArray));
 
-  console.log(searchArray)
 
   fetch(`https://api.petfinder.com/v2/animals?type=Dog&location=${zipCode}&age=${age}&size=${size}&gender=${gender}&good_with_children=${good_with_children}`, {
-    headers: {                                          //template for passing access token using Bearer 
+    headers: {                                          //passing access token using Bearer 
       Authorization: `Bearer ${data.access_token}`,
     },
   })
@@ -79,28 +65,22 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
-      // console.log(data.animals) //consoles properly. it works
-      dataArray.push(data.animals) //it pushes to empty array
-      // console.log(dataArray[0][1].primary_photo_cropped)
-      // console.log(dataArray[0][0].name)
-      // console.log(dataArray[0].length)
+
+      dataArray.push(data.animals) //pushes API data to empty array
       localStorage.setItem("data", JSON.stringify(dataArray))
+      window.location.replace("./results.html")
 
-
-      window.location.replace("./index2.html")
-      
     })
 }
 
 
 function init() {
- let searchRetrieve = JSON.parse(localStorage.getItem("search")) || []
-zipcodeInput.val(searchRetrieve[0])
-ageInput.val(searchRetrieve[1])
-sizeInput.val(searchRetrieve[2])
-genderInput.val(searchRetrieve[3])
-kidsInput.val(searchRetrieve[4])
+  let searchRetrieve = JSON.parse(localStorage.getItem("search")) || []
+  zipcodeInput.val(searchRetrieve[0])
+  ageInput.val(searchRetrieve[1])
+  sizeInput.val(searchRetrieve[2])
+  genderInput.val(searchRetrieve[3])
+  kidsInput.val(searchRetrieve[4])
 }
 
 init()

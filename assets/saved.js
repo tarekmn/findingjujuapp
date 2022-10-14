@@ -1,23 +1,17 @@
 
-
 function displaySavedCards() {
 
   let localSavedDataArray = JSON.parse(localStorage.getItem("saved"))
-  console.log(localSavedDataArray)
-
-
   let appendingContainer = $('.cardRow')
 
   for (let i = 0; i < localSavedDataArray.length; i++) {
     const element = localSavedDataArray[i];
 
-    if (localSavedDataArray[i].primary_photo_cropped) {
-      console.log(true)
-    } else {
-      console.log(false)
+    if (!localSavedDataArray[i].primary_photo_cropped) {
       element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
     }
-    //Add comment explaining what we are appending
+    
+    //Dynamically creating saved cards
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
   <img id= "cardImage" src= "${element.primary_photo_cropped.large ? element.primary_photo_cropped.large : element.primary_photo_cropped}" alt="dog image" >
   
@@ -30,20 +24,15 @@ function displaySavedCards() {
     <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
   </ul>
   <div class="card-body saved-group">
-    <button data-index=${i} class= "cardButton cardListner"><a class = "cardButtonText" class="card-link saved-group">Save</a></button>
     <button class= "cardButton "><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
   </div>
 </div>`)
-
   }
 
   let clearListner = $('#clearID')
 //card listner for save 
 
-
-  
   clearListner.on('click', function(event){
-    console.log(event.target);
     localStorage.removeItem("saved");
     location.reload();
   })

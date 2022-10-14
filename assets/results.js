@@ -1,8 +1,3 @@
-//add event listener
-//everytime you click save, pushes object into global object
-//set array into local storage
-//save page different html, when you go to it, do init function(pull local storage)
-
 
 let savedCardArray = [] 
 if (localStorage.getItem("saved")) {
@@ -14,21 +9,16 @@ if (localStorage.getItem("saved")) {
 function displayCards() {
 
   let localDataArray = JSON.parse(localStorage.getItem("data"))
-  console.log(localDataArray)
-
-
   let appendingContainer = $('.cardRow')
 
   for (let i = 0; i < localDataArray[0].length; i++) {
     const element = localDataArray[0][i];
 
-    if (localDataArray[0][i].primary_photo_cropped) {
-      console.log(true)
-    } else {
-      console.log(false)
+    if (!localDataArray[0][i].primary_photo_cropped) {
       element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
     }
-    //Add comment explaining what we are appending
+
+    //Dynamically creating search result cards 
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
   <img id= "cardImage" src= "${element.primary_photo_cropped.large ? element.primary_photo_cropped.large : element.primary_photo_cropped}" alt="dog image" >
   
@@ -49,16 +39,12 @@ function displayCards() {
   }
 
   let cardListner = $('.cardListner')
-//card listner for save 
+//card listner for save button 
 
-
-  
   cardListner.on('click', function(event){
-    console.log($(this).attr("data-index"))
     let savedIndex = $(this).attr("data-index")
     let savedData = localDataArray[0][+savedIndex]
     savedCardArray.push(savedData)
-    console.log(savedCardArray)
 
     localStorage.setItem("saved", JSON.stringify(savedCardArray));
 
