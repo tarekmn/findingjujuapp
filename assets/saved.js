@@ -8,9 +8,9 @@ function displaySavedCards() {
     const element = localSavedDataArray[i];
 
     if (!localSavedDataArray[i].primary_photo_cropped) {
-      element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
+      element.primary_photo_cropped= ('./assets/images/comingsoonlogo.png')
     }
-    
+
     //Dynamically creating saved cards
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
   <img id= "cardImage" src= "${element.primary_photo_cropped.large ? element.primary_photo_cropped.large : element.primary_photo_cropped}" alt="dog image" >

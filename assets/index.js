@@ -56,7 +56,7 @@ function getPetData(data) {
   localStorage.setItem("search", JSON.stringify(searchArray));
 
 
-  fetch(`https://api.petfinder.com/v2/animals?type=Dog&location=${zipCode}&age=${age}&size=${size}&gender=${gender}&good_with_children=${good_with_children}`, {
+  fetch(`https://api.petfinder.com/v2/animals?type=Dog&location=${zipCode}&age=${age}&size=${size}&gender=${gender}&good_with_children=${good_with_children}&distance=50&limit=32`, {
     headers: {                                          //passing access token using Bearer 
       Authorization: `Bearer ${data.access_token}`,
     },

@@ -15,7 +15,7 @@ function displayCards() {
     const element = localDataArray[0][i];
 
     if (!localDataArray[0][i].primary_photo_cropped) {
-      element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
+      element.primary_photo_cropped= ('./assets/images/comingsoonlogo.png')
     }
 
     //Dynamically creating search result cards 
@@ -43,9 +43,8 @@ function displayCards() {
 
   cardListner.on('click', function(event){
     let savedIndex = $(this).attr("data-index")
-    let savedData = localDataArray[0][+savedIndex]
+    let savedData = localDataArray[0][Number(savedIndex)]
     savedCardArray.push(savedData)
-
     localStorage.setItem("saved", JSON.stringify(savedCardArray));
 
   })
