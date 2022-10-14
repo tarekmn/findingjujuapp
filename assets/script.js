@@ -32,18 +32,27 @@ function getToken() {
 //Getting pet data in a json object format
 function getPetData(data) {
 
-  let zipCode = zipcodeInput.val()
+  let zipCode = Number(zipcodeInput.val())
   let age = ageInput.val()
   let size = sizeInput.val()
   let gender = genderInput.val()
   let good_with_children = kidsInput.val()
 
 
-  console.log(zipCode)
-  console.log(age)
-  console.log(size)
-  console.log(gender)
-  console.log(good_with_children)
+  if(isNaN(zipCode) || zipcodeInput.val().length != 5){
+
+    alert("please input a proper zipcode")
+    return
+  }
+
+ 
+
+
+  // console.log("sdf",zipCode)
+  // console.log(age)
+  // console.log(size)
+  // console.log(gender)
+  // console.log(good_with_children)
 
 
   if (localStorage.search) {

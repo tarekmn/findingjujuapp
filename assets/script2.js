@@ -7,7 +7,6 @@
 let savedCardArray = [] 
 if (localStorage.getItem("saved")) {
   savedCardArray = localStorage.getItem("saved");
-
 } 
 
 
@@ -61,11 +60,7 @@ function displayCards() {
     savedCardArray.push(savedData)
     console.log(savedCardArray)
 
-
-    
-
     localStorage.setItem("saved", JSON.stringify(savedCardArray));
-
 
   })
   
