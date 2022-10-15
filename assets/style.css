@@ -198,7 +198,11 @@ border-radius: 2%;
   }
 
   .cardButton {
-    width: 45px;
+    width: 50px;
+  }
+
+  .cardButtonText {
+    font-size: small;
   }
 
 
