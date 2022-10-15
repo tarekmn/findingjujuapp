@@ -151,7 +151,9 @@ border-radius: 2%;
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 10%;
+  font-size: small;
 }
+
 
 
 
@@ -198,7 +200,7 @@ border-radius: 2%;
   }
 
   .cardButton {
-    width: 50px;
+    width: 60px;
   }
 
   .cardButtonText {
